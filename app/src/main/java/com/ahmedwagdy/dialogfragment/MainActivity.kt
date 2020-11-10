@@ -2,6 +2,8 @@ package com.ahmedwagdy.dialogfragment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -9,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fab.setOnClickListener{
-            showDialog()
+
         }
     }
 
@@ -19,5 +21,20 @@ class MainActivity : AppCompatActivity() {
             isCancelable = false
             show(supportFragmentManager,"DIALOG_FRAGMENT")
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.example_menu,menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.info_item -> {
+                showDialog()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
