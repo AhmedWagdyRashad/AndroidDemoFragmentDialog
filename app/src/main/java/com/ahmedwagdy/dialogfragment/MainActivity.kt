@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
         setSupportActionBar(toolbar)
         fab.setOnClickListener{
-
+            showCustomDialog()
         }
     }
 
@@ -42,6 +42,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun showCustomDialog(){
+        val person = Person("FirstName", "LastName", 25)
+        val customDialog = CustomDialog.newInstance(person)
+        customDialog.isCancelable = false
+        customDialog.show(supportFragmentManager,"DIALOG_FRAGMENT")
     }
 
 }
